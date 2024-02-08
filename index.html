@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arielle's Page</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             background: linear-gradient(45deg, #ff00ff, #ff77ff);
@@ -15,18 +14,10 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: 'Poppins', sans-serif;
         }
 
         .container {
             text-align: center;
-        }
-
-        h1 {
-            color: #ff3399;
-            font-weight: 700;
-            font-size: 24px;
-            margin-bottom: 20px;
         }
 
         button {
@@ -41,7 +32,6 @@
             margin: 10px;
             cursor: pointer;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
         }
 
         button:hover {
@@ -52,7 +42,7 @@
 
 <body>
     <div class="container">
-        <h1>Will You Be My Valentine, Arielle?</h1>
+        <h1 style="color: #ff3399;">Will You Be My Valentine Arielle?</h1>
         <button id="yesButton">Yes</button>
         <button id="noButton">No</button>
     </div>
@@ -61,14 +51,26 @@
         const yesButton = document.getElementById('yesButton');
         const noButton = document.getElementById('noButton');
 
+        const questions = [
+            "Are you sure?",
+            "Are you absolutely sure?",
+            "Are you sure you're sure?",
+            "Do you really mean it?"
+        ];
+
+        function getRandomQuestion() {
+            const randomIndex = Math.floor(Math.random() * questions.length);
+            return questions[randomIndex];
+        }
+
         yesButton.addEventListener('click', () => {
             // Here you can add your confetti or happy reaction
             alert('Yay! Confetti or happy reaction happens!');
         });
 
         noButton.addEventListener('click', () => {
-            // Here you can ask if she's sure or something similar
-            const answer = confirm('Are you sure?');
+            // Here you can ask a random question
+            const answer = confirm(getRandomQuestion());
             if (!answer) {
                 alert('Okay, let me ask again.');
             }
